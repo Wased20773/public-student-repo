@@ -1,9 +1,7 @@
 const elem = document.querySelector("input");
 const resultElem = document.getElementById("result");
 
-elem.addEventListener("input", handleInput);
-
-function handleInput(event) {
+const handleInput = function CheckIfInputIsPalindrome(event) {
   const value = event.target.value;
 
   // clear empty input
@@ -22,6 +20,10 @@ function handleInput(event) {
       resultElem.textContent = "Yes, it's a palindrome!";
       resultElem.className = "text-success";
       return;
+    } else if (!/^\d+$/.test(value)) {
+      resultElem.textContent = "Please enter numbers only.";
+      resultElem.className = "text-warning";
+      return;
     } else {
       resultElem.textContent = "No, it's not a palindrome.";
       resultElem.className = "text-danger";
@@ -32,4 +34,6 @@ function handleInput(event) {
     resultElem.className = "text-warning";
     return;
   }
-}
+};
+
+elem.addEventListener("input", handleInput);
