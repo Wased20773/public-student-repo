@@ -5,6 +5,16 @@ const bodyBackground = document.querySelector("body");
 let intervalId;
 const defaultIntervalTime = 3000;
 
+const getValidInterval = () => {
+  const value = input.value.trim();
+  const num = parseInt(value, 10);
+
+  if (isNaN(num)) {
+    return defaultIntervalTime;
+  }
+  return num * 1000;
+};
+
 const handleButton = function ChangeBackgroundToIntervalOrContinue(event) {
   const value = event.target.value;
 
@@ -20,7 +30,7 @@ const handleButton = function ChangeBackgroundToIntervalOrContinue(event) {
     button.value = "Stop";
     button.className = "btn-danger rounded px-2 py-1 mt-3";
 
-    intervalId = setInterval(alternateColors, input.value * 1000);
+    intervalId = setInterval(alternateColors, getValidInterval());
   }
   // Go back to default defined interval
   else {
@@ -31,6 +41,7 @@ const handleButton = function ChangeBackgroundToIntervalOrContinue(event) {
 };
 
 const alternateColors = function AlternateColorsForWindowBackground(event) {
+  // generate random color of half opacity
   const randomColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(
     Math.random() * 256
   )}, ${Math.floor(Math.random() * 256)}, 0.5)`;
@@ -38,6 +49,7 @@ const alternateColors = function AlternateColorsForWindowBackground(event) {
   bodyBackground.style.background = randomColor;
 };
 
+// run default attributes on page load
 onload = (event) => {
   button.value = "Start";
   button.className = "btn-primary rounded px-2 py-1 mt-3";
@@ -49,13 +61,13 @@ onload = (event) => {
 };
 
 button.addEventListener("click", handleButton);
-input.addEventListener("input", (event) => {
-  console.log(input.value);
 
-  if (button.value === "Stop") {
+// update interval speed when updating the input field
+input.addEventListener("input", () => {
+  if (button.value === "Stop" && input.value > 0) {
     clearInterval(intervalId);
     intervalId = null;
-    intervalId = setInterval(alternateColors, input.value * 1000);
+    intervalId = setInterval(alternateColors, getValidInterval());
   }
 });
 addEventListener("load", onload);
