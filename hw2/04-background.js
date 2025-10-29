@@ -50,7 +50,7 @@ const alternateColors = function AlternateColorsForWindowBackground(event) {
 };
 
 // run default attributes on page load
-onload = (event) => {
+const onload = function ChangeToDefaultValuesOnPageLoad(event) {
   button.value = "Start";
   button.className = "btn-primary rounded px-2 py-1 mt-3";
   input.value = 1;
@@ -70,4 +70,5 @@ input.addEventListener("input", () => {
     intervalId = setInterval(alternateColors, getValidInterval());
   }
 });
-addEventListener("load", onload);
+
+window.addEventListener("load", onload);
