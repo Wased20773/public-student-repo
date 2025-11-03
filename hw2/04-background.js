@@ -22,22 +22,26 @@ const handleButton = function ChangeBackgroundToIntervalOrContinue(event) {
   console.log(button);
   console.log(input.value);
 
+  // prevents multiple intervals from occuring
   clearInterval(intervalId);
   intervalId = null;
 
-  // Go back to user defined interval
+  /* --- FIXED BACKGROUND CHANGING CONFUSION --- */
+  // Begin changing background
   if (value === "Start") {
     button.value = "Stop";
     button.className = "btn-danger rounded px-2 py-1 mt-3";
 
     intervalId = setInterval(alternateColors, getValidInterval());
   }
-  // Go back to default defined interval
+  // Stop background changing
   else {
     button.value = "Start";
     button.className = "btn-primary rounded px-2 py-1 mt-3";
-    intervalId = setInterval(alternateColors, defaultIntervalTime);
+    clearInterval(intervalId);
+    intervalId = null;
   }
+  /* -------------------------------------------- */
 };
 
 const alternateColors = function AlternateColorsForWindowBackground(event) {
@@ -50,21 +54,26 @@ const alternateColors = function AlternateColorsForWindowBackground(event) {
 };
 
 // run default attributes on page load
-const onload = function ChangeToDefaultValuesOnPageLoad(event) {
-  button.value = "Start";
-  button.className = "btn-primary rounded px-2 py-1 mt-3";
-  input.value = 1;
+const onload = function ChangeToDefaultValuesOnPageLoad() {
+  button.value = "Stop";
+  button.className = "btn-danger rounded px-2 py-1 mt-3";
+  input.value = 3;
 
   clearInterval(intervalId);
   intervalId = null;
   intervalId = setInterval(alternateColors, defaultIntervalTime);
 };
 
-button.addEventListener("click", handleButton);
-
 // update interval speed when updating the input field
-input.addEventListener("input", () => {
-  if (button.value === "Stop" && input.value > 0) {
+input.addEventListener("input", (event) => {
+  if (button.value === "Stop" && event.target.value > 0) {
+    clearInterval(intervalId);
+    intervalId = null;
+    intervalId = setInterval(alternateColors, getValidInterval());
+  } else if (Number(input.value) === 0) {
+    input.value = 3;
+
+    // We still have to set the interval back to default!
     clearInterval(intervalId);
     intervalId = null;
     intervalId = setInterval(alternateColors, getValidInterval());
@@ -72,3 +81,4 @@ input.addEventListener("input", () => {
 });
 
 window.addEventListener("load", onload);
+button.addEventListener("click", handleButton);
