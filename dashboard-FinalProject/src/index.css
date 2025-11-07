@@ -4,11 +4,31 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  background-color: var(--Background-HTML);
+  color: var(--High-emphasis-light-text); /* by default */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* --- Color Palette --- */
+  /* Text */
+  --High-emphasis-light-text: rgb(220, 220, 220);
+  --Medium-emphasis-light-text: rgb(176, 176, 176);
+  --Low-emphasis-light-text: rgb(132, 132, 132);
+
+  --High-emphasis-dark-text: rgb(30, 30, 30);
+  --Medium-emphasis-dark-text: rgb(50, 50, 50);
+  --Low-emphasis-dark-text: rgb(70, 70, 70);
+
+  /* Background */
+  --Background-HTML: rgb(27, 27, 27);
+
+  /* Buttons */
+  --Btn-primary: rgb(56, 139, 248);
+  --Btn-secondary: rgb(202, 202, 202);
+}
+
+body {
+  margin: 0;
 }

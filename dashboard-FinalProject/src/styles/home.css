@@ -1,0 +1,30 @@
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: linear-gradient(rgb(135, 135, 135), var(--Background-HTML));
+
+  height: 500px;
+}
+
+.hero-title,
+.hero-text {
+  margin: 0;
+  text-align: center;
+}
+
+.hero-title {
+  color: var(--High-emphasis-light-text);
+}
+
+.hero-text {
+  color: var(--Medium-emphasis-light-text);
+}
+
+.scroll-cards-container {
+  display: flex;
+  justify-self: center;
+  align-items: start;
+}
