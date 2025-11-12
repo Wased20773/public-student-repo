@@ -1,11 +1,10 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  background-color: var(--Background-HTML);
+  /* For consistent styling */
   color: var(--High-emphasis-light-text); /* by default */
+  background-color: var(--Background-HTML);
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -27,6 +26,15 @@
   /* Buttons */
   --Btn-primary: rgb(56, 139, 248);
   --Btn-secondary: rgb(202, 202, 202);
+
+  /* --- Special Colors --- */
+  /* Steam */
+  --Theme-Steam-dark: rgb(23, 26, 33);
+  --Theme-Steam-light: rgb(42, 71, 94);
+
+  /* IGDB */
+  --Theme-IGDB-dark: rgb(56, 22, 107);
+  --Theme-IGDB-light: rgb(139, 77, 229);
 }
 
 body {

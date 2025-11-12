@@ -3,10 +3,11 @@ import { Link, useLocation } from "react-router-dom";
 import "../styles/navbar.css";
 
 const Navbar = () => {
-  const location = useLocation(); // used to indicate what URL path we are in
+  // used to indicate what URL path we are in
+  const location = useLocation();
 
   return (
-    <div className="nav-container">
+    <nav className="nav-container">
       {/* Home */}
       <Link to="/" className="nav-link">
         Home
@@ -25,7 +26,7 @@ const Navbar = () => {
       <Link to="/compare" className="nav-link nav-compare">
         Compare
       </Link>
-    </div>
+    </nav>
   );
 };
 

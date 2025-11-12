@@ -1,3 +1,4 @@
+/* Hero */
 .hero-container {
   display: flex;
   justify-content: center;
@@ -23,8 +24,44 @@
   color: var(--Medium-emphasis-light-text);
 }
 
-.scroll-cards-container {
+/* API cards */
+.cards-container {
   display: flex;
-  justify-self: center;
-  align-items: start;
+  justify-content: center;
+  gap: 25px;
+}
+
+.cards-api {
+  border-radius: 30px;
+  background-color: rgb(43, 43, 43);
+  width: 300px;
+  height: 200px;
+  padding: 15px;
+}
+
+.cards-api-heading {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.cards-api-h3 {
+  margin: 0;
+}
+
+.cards-api-text {
+}
+
+/* Themes */
+.steam-theme {
+  background: linear-gradient(
+    var(--Theme-Steam-dark),
+    var(--Theme-Steam-light)
+  );
+}
+
+.igdb-theme {
+  background: linear-gradient(var(--Theme-IGDB-dark), var(--Theme-IGDB-light));
 }
